@@ -15,6 +15,8 @@ static TDS_STMT *stmt;
 
 static void test_type(TDSSOCKET *tds, TDSCOLUMN *col)
 {
+	unsigned n;
+
 	/* check that we can get type information from column */
 	struct _drecord drec;
 	memset(&drec, 0, sizeof(drec));
@@ -27,7 +29,7 @@ static void test_type(TDSSOCKET *tds, TDSCOLUMN *col)
 
 	/* check we can attempt to convert from any type to any
 	 * SQL C type */
-	for (unsigned n = 0; n < num_c_types; ++n) {
+	for (n = 0; n < num_c_types; ++n) {
 		TDS_CHAR buffer[256];
 		SQLLEN len;
 		int sql_c_type = sql_c_types[n];
